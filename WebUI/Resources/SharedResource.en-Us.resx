@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abstrakdan və Veb Dizayn Dünyasından Xəbərlər və Onlayn Rəqəmsal Marketinqin Tam Həlli" xml:space="preserve">
+    <value>News From Abstrak And Around The World Of Web Design And Complete Solution of Online Digital Marketing</value>
+  </data>
+  <data name="Abunə ol" xml:space="preserve">
+    <value>Subscribe</value>
+  </data>
+  <data name="ANA SƏHİFƏ" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="aylıq" xml:space="preserve">
+    <value>monthly</value>
+  </data>
+  <data name="Aylıq hesablanır" xml:space="preserve">
+    <value>Billed monthly</value>
+  </data>
+  <data name="AZE" xml:space="preserve">
+    <value>ENG</value>
+  </data>
+  <data name="Bizi xüsusi edən nədir?" xml:space="preserve">
+    <value>What makes us special?</value>
+  </data>
+  <data name="Bu gün başlayın" xml:space="preserve">
+    <value>Get Started Today</value>
+  </data>
+  <data name="Bütün hüquqlar WebSuper Team tərəfindən qorunur." xml:space="preserve">
+    <value>All rights reserved by WebSuper Team.</value>
+  </data>
+  <data name="Daha ətraflı" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="Doğru planı tapın." xml:space="preserve">
+    <value>Find the Right Plan.</value>
+  </data>
+  <data name="Freelancerlər və dizayn komandaları üçün çevik qiymət seçimləri." xml:space="preserve">
+    <value>Flexible pricing options for freelancers and design teams.</value>
+  </data>
+  <data name="Fərqli çubuqlar, uzun müddət aralıq tristique, dui urna bib endum magna, ut ullamcorper purus" xml:space="preserve">
+    <value>Fusce varius, dolor tempor interdum tristique, dui urna bib endum magna, ut ullamcorper purus</value>
+  </data>
+  <data name="Gəlin Birlikdə Çalışaq" xml:space="preserve">
+    <value>Let's Work Together</value>
+  </data>
+  <data name="illik" xml:space="preserve">
+    <value>yearly</value>
+  </data>
+  <data name="Karyera" xml:space="preserve">
+    <value>Careers</value>
+  </data>
+  <data name="Layihələr çatdırıldı" xml:space="preserve">
+    <value>Projects deliverd</value>
+  </data>
+  <data name="Layihəmiz" xml:space="preserve">
+    <value>Our Project</value>
+  </data>
+  <data name="Mütəxəssis" xml:space="preserve">
+    <value>Specialist </value>
+  </data>
+  <data name="Nə baş verir" xml:space="preserve">
+    <value>What's Going On</value>
+  </data>
+  <data name="PORTFOLO" xml:space="preserve">
+    <value>PORTFOLO</value>
+  </data>
+  <data name="Qiymət Planı" xml:space="preserve">
+    <value>Pricing Plan</value>
+  </data>
+  <data name="Sahəsində mütəxəssislər" xml:space="preserve">
+    <value>Experts in field</value>
+  </data>
+  <data name="Uğurlu layihə lazımdır?" xml:space="preserve">
+    <value>Need a successful project?</value>
+  </data>
+  <data name="Və ya müxtəlif növ, qeyri diktum. Efficitur ipsum'da Enean, egestas ipsum'da. Mauris in mi ac tellus." xml:space="preserve">
+    <value>In vel varius turpis, non dictum sem. Aenean in efficitur ipsum, in egestas ipsum. Mauris in mi ac tellus.</value>
+  </data>
+  <data name="XİDMƏTLƏR" xml:space="preserve">
+    <value>SERVİCES</value>
+  </data>
+  <data name="ÜNVAN" xml:space="preserve">
+    <value>ADDRESS</value>
+  </data>
+  <data name="İllik hesablanır" xml:space="preserve">
+    <value>Billed yearly</value>
+  </data>
+  <data name="İndi pulsuz Klaviatura Sitatını əldə edin" xml:space="preserve">
+    <value>Get a free Keystroke quote now</value>
+  </data>
+  <data name="ƏLAQƏ" xml:space="preserve">
+    <value>CONTACT</value>
+  </data>
+  <data name="Əlaqədə olmaq!" xml:space="preserve">
+    <value>Get in touch!</value>
+  </data>
+  <data name="Əməliyyat illəri" xml:space="preserve">
+    <value>Years of operation</value>
+  </data>
+  <data name="Ən son hekayələr" xml:space="preserve">
+    <value>Latest stories</value>
+  </data>
+  <data name="Ən yaxşılarımızdan bəziləri iş" xml:space="preserve">
+    <value>Some of our finest work</value>
+  </data>
+</root>

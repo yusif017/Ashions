@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_AuthLayout";
+}
+@model LoginDTO
+
+
+<div class="row w-100 m-0">
+    <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+        <div class="card col-lg-4 mx-auto">
+            <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Login</h3>
+         
+                    <form method="post" class="user">
+                        <div class="form-group">
+                            <label><strong>Email</strong></label>
+                            <input type="email" asp-for="Email" class="form-control  p_input"
+                                   placeholder="Enter Email Address...">
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Password</strong></label>
+                            <input type="password" asp-for="Password" class="form-control  p_input "
+                                   placeholder="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                        <div class="form-group">
+
+                                <div class="form-check ml-2 align-items-center">
+                              
+                                @Html.CheckBoxFor(x => x.RememberMe)<label class="ml-1" for="for">Remenber me</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Sign me in</button>
+                        </div>
+                    </form>
+                    <p class="sign-up">Don't have an Account?<a href="#"> Sign Up</a></p>
+                
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+</div>

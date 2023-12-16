@@ -1,0 +1,185 @@
+﻿@using Entities.DTOs.ProductDTOs;
+@model ProductUpdateDTO
+@section Link{
+    <style>
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        img {
+            max-width: 150px;
+            max-height: 150px;
+            margin: 5px;
+        }
+    </style>
+}
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="PhotoUrls" />
+    <input type="hidden" asp-for="Id" />
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#az" type="button" role="tab" aria-controls="home" aria-selected="true">Az</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#ru" type="button" role="tab" aria-controls="profile" aria-selected="false">Ru</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="contact" aria-selected="false">En</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="az" role="tabpanel" aria-labelledby="home-tab">
+            <div class="form-group">
+                <input type="text" class="form-control" asp-for="Lang[0].ProductTitle" placeholder=" Enter product name in Az" />
+                <input type="text" class="form-control" asp-for="Lang[0].ProductSubTitle" placeholder="Enter ProductSubTitle in Az" />
+                <input type="text" class="form-control" asp-for="Lang[0].Description" placeholder="Enter Description in Az" />
+
+            </div>
+        </div>
+        <div class="tab-pane fade" id="ru" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="form-group">
+                <input type="text" class="form-control" asp-for="Lang[1].ProductTitle" placeholder="Enter product name in Ru" />
+                <input type="text" class="form-control" asp-for="Lang[1].ProductSubTitle" placeholder="Enter ProductSubTitle in Ru" />
+                <input type="text" class="form-control" asp-for="Lang[1].Description" placeholder="Enter Description in Ru" />
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="form-group">
+                <input type="text" class="form-control" asp-for="Lang[2].ProductTitle" placeholder="Enter product name in Eng" />
+                <input type="text" class="form-control" asp-for="Lang[2].ProductSubTitle" placeholder="Enter ProductSubTitle in Eng" />
+                <input type="text" class="form-control" asp-for="Lang[2].Description" placeholder="Enter Description in Eng" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input class="form-control"  name="price" asp-for="Price" value="@Model.Price"  placeholder="Enter price..." />
+
+    </div>
+    <div class="form-group">
+        <label>Discount</label>
+        <input class="form-control"  name="Discount" asp-for="Discount" value="@Model.Discount"  placeholder="Enter discount..." />
+
+    </div>
+    <div class="form-group">
+        <label>Quantity</label>
+        <input class="form-control" type="number" name="Quantity" asp-for="Quantity" value="@Model.Quantity" placeholder="Enter quantity..." />
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Categories"></select>
+    </div>
+    <div class="form-group">
+        <label>Color</label>
+        <select class="form-control" asp-for="ProductColorId" asp-items="@ViewBag.ProductColor"></select>
+    </div>
+    <div class="form-group">
+        <label>Oxarliq</label>
+        <select class="form-control" asp-for="PraductOxsarId" asp-items="@ViewBag.PraductOxsar"></select>
+    </div>
+
+   
+    <div class="form-group">
+        <label>Size</label>
+        <select class="form-select form-control" asp-for="PraductSize" aria-label="Default select example">
+            <option value="0" selected>Olcusuz</option>
+            <option value="1">XL</option>
+            <option value="2">S</option>
+            <option value="3">M</option>
+            <option value="4">L</option>
+
+        </select>
+    </div>
+    <div class="form-group">
+    <label>Kargo</label>
+        <select class="form-select form-control" asp-for="ProductKargo" id="secimElementi" aria-label="Default select example">
+        <option value="1">Odenissiz</option>
+        <option  value="2">Odenisli</option>
+    </select>
+    </div>
+    <div class="form-group">
+        <label>Kargo price</label>
+        <input class="form-control" asp-for="@Model.KargoPrice" name="KargoPrice" placeholder="Enter Kargo price..." type="number" id="inputElementi" disabled>
+    </div>
+    <div class="form-group m-aouto">
+        <label for="IsFavourite">IsFavourite</label>
+        <input asp-for="IsFeatured" type="checkbox" placeholder="IsFavourite">
+    </div>
+    <div class="form-group">
+        <label class="custom-file-upload " style="margin-top: 10px;display: inline-block;padding: 4px 20px;cursor: pointer;background: rgb(202, 197, 197); color:black">
+            Dosya Seçin<input type="file" id="fileInput" accept="image/*" multiple name="Photo" style="display:none">
+        </label>
+    
+        <div id="imageSlider" class="slider-container"></div>
+    </div>
+    <div class="card">
+        <div id="productList" class="row">
+        </div>
+    </div>
+    <div class="card">
+        <div class="row">
+            @foreach (var item in Model.PhotoUrls)
+            {
+                <div class="col-1">
+                <img src="@item" />
+                    </div>
+            }
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-info" value="Create" />
+</form>
+
+
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js" integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var secimElementi = document.getElementById("secimElementi");
+            var inputElementi = document.getElementById("inputElementi");
+
+            secimElementi.addEventListener("change", function () {
+                if (secimElementi.value === "1") {
+                    inputElementi.value = ""; 
+                    inputElementi.disabled = true; 
+                } else {
+                    inputElementi.disabled = false; 
+                }
+            });
+        });</script>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const imageSlider = document.getElementById('imageSlider');
+
+        fileInput.addEventListener('change', (event) => {
+            const files = event.target.files;
+
+            imageSlider.innerHTML = '';
+
+            for (const file of files) {
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+
+                        const imageWrapper = document.createElement('div');
+                        imageWrapper.classList.add('image-wrapper');
+                        imageWrapper.appendChild(img);
+
+                        imageSlider.appendChild(imageWrapper);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
+}

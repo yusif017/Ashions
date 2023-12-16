@@ -1,0 +1,26 @@
+﻿@model ContactDetailDTO
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <a href="/admin/Dashboard" class="btn btn-info m-1">Geri</a>
+            <div class="table-responsive">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <td>@Model.Name</td>
+                            <tr>
+                            <th>Email</th>
+                            <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                            <th>Content</th>
+                            <td>@Model.Content</td>
+                            </tr>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

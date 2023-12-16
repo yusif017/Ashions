@@ -1,0 +1,31 @@
+﻿@using Entities.DTOs.ColorDTOs;
+
+@model ColorUpdateDTO
+
+
+<div class="card w-100">
+    <div class="card-body">
+
+        <input type="hidden" asp-for="Id" />
+
+
+        <form method="post">
+            <div class="form-group">
+                <input type="text" asp-for="ColorLang[0].Title" class="form-control" placeholder="Name Aze" />
+        
+
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="ColorLang[1].Title" class="form-control" placeholder="Name Eng" />
+           
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="ColorLang[2].Title" class="form-control" placeholder="Name RU" />
+            
+            </div>
+
+
+            <input type="submit" value="Update" class="btn btn-info" />
+        </form>
+    </div>
+</div>

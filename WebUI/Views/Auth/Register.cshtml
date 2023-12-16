@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_AuthLayout";
+}
+@model RegisterDTO
+
+
+
+<div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="row w-100 m-0">
+        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-4 mx-auto">
+                <div class="card-body px-5 py-5">
+                    <h3 class="card-title text-left mb-3">Register</h3>
+                    
+                        <form method="post" class="user">
+                            <div asp-validation-summary="None" class="text-danger"></div>
+
+                            <div class="form-group">
+                            <label asp-for="Firstname"><strong>Firstname</strong></label>
+                                <input type="text" asp-for="Firstname" class="form-control p_input"
+                                       placeholder="First Name">
+                                <span asp-validation-for="Firstname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                            <label asp-for="Lastname"><strong>Lastname</strong></label>
+                                <input type="text" asp-for="Lastname" class="form-control p_input"
+                                       placeholder="First Name">
+                                <span asp-validation-for="Lastname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                            <label asp-for="Email"><strong>Email</strong></label>
+                                <input type="email" asp-for="Email" class="form-control p_input"
+                                       placeholder="Email Address">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                            <label asp-for="Password"><strong>Password</strong></label>
+                                <input type="password" asp-for="Password" class="form-control p_input" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                            <label asp-for="ConfirmPassword"><strong>Password Confirm</strong></label>
+                                <input type="password" asp-for="ConfirmPassword" class="form-control p_input" placeholder="Repeat Password">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                            </div>
+
+                        
+                        <p class="sign-up text-center">Already have an Account?<a href="/Auth/Login"> Sign Up</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- row ends -->
+</div>

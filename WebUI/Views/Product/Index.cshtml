@@ -1,0 +1,282 @@
+﻿@model ProductFilterVM
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="shop__sidebar">
+                    <div class="sidebar__sizes">
+                        <div class="section-title">
+                            <h4>Catagories</h4>
+                        </div>
+                        <div class="nav-side-menu">
+                        
+                            <div class="menu-list">
+                                <form>
+                                 
+                                    @foreach (var item in Model.CategoryFilters)
+                                    {
+
+                                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                            <input onclick="GetProductCategory()" value="@item.Id" type="checkbox" class="custom-control-input cats" id="color-1-@item.Id">
+                                            <label class="custom-control-label" for="color-1-@item.Id">@item.CategoryName</label>
+
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar__sizes">
+                        <div class="section-title">
+                            <h4>Color</h4>
+                        </div>
+                        <div class="nav-side-menu">
+
+                            <div class="menu-list">
+                                <form>
+
+                                    @foreach (var item in Model.ColorFilters)
+                                    {
+
+                                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                            <input onclick="GetProductColor()" value="@item.Id" type="checkbox" class="custom-control-input colorcats" id="color-2-@item.Id">
+                                            <label class="custom-control-label" for="color-2-@item.Id">@item.ColorName</label>
+
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="sidebar__filter">
+                            <div class="section-title">
+                                <h4>Shop by price</h4>
+                            </div>
+                  
+
+
+                            <form id="priceFilterForm" class="w-75">
+                                <div class="d-flex align-items-center">
+                                    <input type="text" id="minPrice" class="form-control w-50 mr-1 mb-1" placeholder="Min" name="minPrice" />
+
+
+                                    <input type="text" id="maxPrice" class="form-control w-50  mb-1" placeholder="Max" name="maxPrice" />
+
+                                </div>
+                                    <input type="submit" class="btn btn-info w-100" value="Apply Filters" />
+                               
+                                
+                              
+                               
+                            </form>
+                            
+                           
+                        </div>
+                   
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                <div class="col-12 d-flex align-items-center justify-content-between mb-3">
+               <div></div>
+               <div>
+
+                        <label for="countProduct" class="form-label">Ürün Sayısı:</label>
+                        <select style="border-radius:5px; border:none; color:#ffff; background-color:#2259;" onchange="GetProductCount()" id="countProduct" class="form-select">
+                            
+                            <option value="9">9</option>
+                            <option value="12">12</option>
+                            <option value="15">15</option>
+                            <option value="18">18</option>
+
+                        </select>
+
+               </div>
+                 
+           </div>
+                <div class="row" id="productList">
+                </div>
+                <div class="col-lg-12 text-center">
+                    <ul class="pagination pagination-sm" id="pagination">
+                        @if (ViewBag.CurrentPage > 1)
+                        {
+                            <li class="page-item"><a class="page-link" href="/product?page=@(ViewBag.CurrentPage - 1)">Previous</a></li>
+                        }
+                        @if (ViewBag.CurrentPage < ViewBag.ProductCount)
+                        {
+                            <li class="page-item"><a class="page-link" href="/product?page=@(ViewBag.CurrentPage + 1)">Next</a></li>
+                        }
+                    </ul>
+                </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    <!-- Shop Section End -->
+
+@section Scripts{
+  
+    <script>
+        const countProduct = document.querySelector('#countProduct');
+        const productList = document.querySelector('#productList');
+        const pageLink = document.querySelectorAll('.page-link');
+        const pageItem = document.querySelectorAll('.page-item');
+        const pagination = document.querySelector('#pagination');
+        const cats = document.querySelectorAll('.cats');
+        const colorcats = document.querySelectorAll('.colorcats');
+
+
+
+        document.getElementById("priceFilterForm").addEventListener("submit", function (e) {
+            e.preventDefault(); 
+
+    
+            let minPriceValue = document.getElementById("minPrice").value;
+            let maxPriceValue = document.getElementById("maxPrice").value;
+          
+            
+            let dataList = JSON.parse(localStorage.getItem("data"));
+            dataList.minPrice = minPriceValue;
+            dataList.maxPrice = maxPriceValue; 
+            localStorage.setItem("data", JSON.stringify(dataList));
+            GetFilteredData();
+        });
+
+       
+        function GetProductCount() {
+            var value = countProduct.options[countProduct.selectedIndex].value;
+            let dataList = JSON.parse(localStorage.getItem("data"));
+            dataList.take = value;
+            localStorage.setItem("data", JSON.stringify(dataList));
+            GetFilteredData();
+        }
+
+        $(function () {
+            let cookieData = {
+                take: 9,
+                page: 1,
+                minPrice:0,
+                maxPrice:1000000,
+                categories: null,
+                color:null
+
+            };
+            localStorage.setItem("data", JSON.stringify(cookieData));
+            GetFilteredData(1, 9, 0, 1000000);
+        });
+
+        function GetFilteredData() {
+            let dataList = JSON.parse(localStorage.getItem("data"));
+            let minPriceValue = dataList.minPrice;
+            let maxPriceValue = dataList.maxPrice;
+
+            $.ajax({
+                type: 'GET',
+                url: `/Product/GetDatas?page=${dataList.page}&take=${dataList.take}&categoryList=${dataList.categories}&colorList=${dataList.color}&minPrice=${minPriceValue}&maxPrice=${maxPriceValue}`,
+                contentType: 'application/json',
+                success: function (e) {
+                    console.log(e);
+                    ProductList(e.products, e.productCount, dataList.take);
+                }
+            });
+        }
+
+        function GetProductCategory() {
+            let catList = "";
+            for (let i = 0; i < cats.length; i++) {
+                if (cats[i].checked) {
+                    catList += cats[i].value + ",";
+                }
+            }
+            let category = catList.substring(0, catList.length - 1);
+            let dataList = JSON.parse(localStorage.getItem("data"));
+            dataList.categories = category;
+            localStorage.setItem("data", JSON.stringify(dataList));
+            GetFilteredData();
+        }
+        function GetProductColor() {
+            let colorcatList = "";
+            for (let i = 0; i < colorcats.length; i++) {
+                if (colorcats[i].checked) {
+                    colorcatList += colorcats[i].value + ",";
+                }
+            }
+            let colors = colorcatList.substring(0, colorcatList.length - 1);
+            let dataList = JSON.parse(localStorage.getItem("data"));
+            dataList.color = colors;
+            localStorage.setItem("data", JSON.stringify(dataList));
+            GetFilteredData();
+        }
+
+        function GetPage(data, take) {
+            let dataList = JSON.parse(localStorage.getItem("data"));
+            dataList.page = data;
+            localStorage.setItem("data", JSON.stringify(dataList));
+            GetFilteredData();
+        }
+
+        function ProductList(datas, productCount, take) {
+            productList.innerHTML = '';
+
+            for (let i = 0; i < datas.length; i++) {
+                productList.innerHTML += `
+                            <div class="col-lg-4 col-md-6">
+                                <div class="product__item">
+                                    <div class="set-bg">
+                                                        <img style="border-radius:30px; height: 360px; width:100%;" src="${datas[i].photoUrl}" alt="${datas[i].productTitle}" />
+                                    </div>
+                                    <div>
+                                        <ul class="product__hover" style="bottom: 150px;">
+                                                    <li><a href="/product/Detail/${datas[i].id}/${datas[i].seourl}"><span class="arrow_expand"></span></a></li>
+                                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                            <li><a onclick="AddToCart(${datas[i].id})"><span class="icon_bag_alt"></span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="#">${datas[i].productTitle} </a></h6>
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="product__price">$${datas[i].price}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+            }
+
+            pagination.innerHTML = '';
+            for (let i = 0; i < productCount; i++) {
+                pagination.innerHTML += `
+                            <li class="page-item ">
+                                <a onclick="GetPage(${i + 1}, ${take})" class="page-link">
+                                    ${i + 1}
+                                </a>
+                            </li>
+                        `;
+            }
+        }
+    </script>
+
+
+}
